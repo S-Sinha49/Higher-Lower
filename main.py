@@ -1,11 +1,18 @@
 import art
 from game_data import data
 import random
+from flask import Flask
 
+
+#Displaying the Logo
 Logo = art.logo
 score = 0
 game = True
 res1 = random.choice(data)
+
+app = Flask(__name__)
+
+@app.route('/')
 
 #Displaying the Options
 def display_data(account):
@@ -52,3 +59,6 @@ while game:
   else:
     game = False
     print(f"Wrong Answer. Your Current Score: {score}")
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)
